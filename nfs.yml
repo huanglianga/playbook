@@ -1,0 +1,22 @@
+- hosts: 124.71.166.144
+  tasks:
+    - name: yum nfs
+      yum:
+        name: rpcbind,nfs-utils
+        state: installed
+    - name: mkdir dir
+      file:
+        path: /data-hl95
+        state: directory
+        owner: nfsnobody
+        group: nfsnobody
+    - name: start rpc
+      systemd:
+        name: rpcbind
+        state: started
+        enabled: yes
+    - name: start nfs
+      systemd:
+        name: nfs
+        state: started
+        enabled: yes
