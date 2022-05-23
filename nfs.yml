@@ -10,6 +10,12 @@
         state: directory
         owner: nfsnobody
         group: nfsnobody
+    - name: mkdir dir
+      file:
+        path: /test-data
+        state: directory
+        owner: nfsnobody
+        group: nfsnobody
     - name: start rpc
       systemd:
         name: rpcbind
